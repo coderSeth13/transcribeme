@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --purple-dark: #4917b1;
+  --black: #010101;
+  --gold: #f8c41c;
+  --light-white: #f7f6fa;
+  --white: #ffffff;
+  --green: #2bd78d;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-background: var(--white);
+  --color-section-bg: var(--light-white);
+  --color-text: var(--black);
+  --color-accent-1: var(--green);
+  --color-accent-2: var(--gold);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Gradients */
+  --color-gradient-1: linear-gradient(
+    135deg,
+    var(--purple-dark),
+    var(--black),
+    var(--purple-dark)
+  );
+  --color-gradient-2: linear-gradient(135deg, var(--black), var(--purple-dark));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .heading-1 {
+    @apply font-bold text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  .heading-2 {
+    @apply font-medium text-2xl lg:text-3xl;
+  }
 }
