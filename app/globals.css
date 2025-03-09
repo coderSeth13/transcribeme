@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Root Variables */
 :root {
   --purple-dark: #4917b1;
   --black: #010101;
@@ -9,28 +14,27 @@
   --green: #2bd78d;
 }
 
+/* Theme Variables */
 @theme inline {
   --color-background: var(--white);
-  --color-section-bg: var(--light-white);
+  --color-section: var(--light-white);
   --color-text: var(--black);
   --color-accent-1: var(--green);
   --color-accent-2: var(--gold);
-
-  /* Gradients */
-  --color-gradient-1: linear-gradient(
-    135deg,
-    var(--purple-dark),
-    var(--black),
-    var(--purple-dark)
-  );
-  --color-gradient-2: linear-gradient(135deg, var(--black), var(--purple-dark));
 }
 
+/* Global Styles */
 body {
   font-family: var(--font-inter), sans-serif;
 }
 
 @layer base {
+  /* Wrapper Class for Layout */
+  .wrapper {
+    @apply w-full max-w-screen-xl mx-auto px-4 sm:px-2 md:px-4 lg:px-6 xl:px-16;
+  }
+
+  /* Flexbox Utility Classes */
   .flex-center {
     @apply flex items-center justify-center;
   }
@@ -39,11 +43,38 @@ body {
     @apply flex items-center justify-between;
   }
 
+  /* Typography */
   .heading-1 {
-    @apply font-bold text-3xl md:text-4xl lg:text-5xl;
+    @apply font-black text-3xl md:text-4xl lg:text-5xl;
   }
 
   .heading-2 {
     @apply font-medium text-2xl lg:text-3xl;
+  }
+}
+
+@layer utilities {
+  /* Background for Pen Brush */
+  .bg-pen-brush {
+    background-image: url("/pen-brushes.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+  }
+
+  /* Gradient Background */
+  .bg-gradient-1 {
+    background-image: linear-gradient(
+      135deg,
+      var(--purple-dark),
+      var(--black),
+      var(--purple-dark)
+    );
+  }
+
+  /* Logo Container Sizing */
+  .logo-container {
+    @apply flex items-center justify-center w-full h-16 sm:h-20;
   }
 }
